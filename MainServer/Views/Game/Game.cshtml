@@ -1,0 +1,38 @@
+﻿@model Models.Dtos.ViewSetup
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="">
+<head>
+    <title>DnD</title>
+</head>
+<body>
+<div>
+    <pre>@(Model.UseLastBattle?@Model.LastBattle:"")</pre>
+</div>
+<div>
+    <form method="POST" action="Game">
+        <header>Name</header>
+        <input type="text" name="name" value="@Model.Player.Name"/>
+        <header>HP</header>
+        <input type="number" name="hp" value="@Model.Player.HP"/>
+        <header>Attack modifier</header>
+        <input type="number" name="am" value="@Model.Player.AttackModifier"/>
+        <header>Attack Per Round</header>
+        <input type="number" name="apr" value="@Model.Player.AttacksPerRound"/>
+        <header>Damage</header>
+        <input type="number" name="ddtn" value="@Model.Player.DamageDiceThrowsNumber"/>d
+        <input type="number" name="ddt" value="@Model.Player.DamageDiceType"/>
+        <header>Damage modifier</header>
+        <input type="number" name="dm" value="@Model.Player.DamageModifier"/>
+        <header>Armor class</header>
+        <input type="number" name="ac" value="@Model.Player.ArmorClass"/>
+        <button type="submit" @(Model.Player.HP<=0?"disabled":"")>To Battle!</button>
+    </form>
+</div>
+</body>
+</html>
